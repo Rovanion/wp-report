@@ -29,4 +29,4 @@ for url in $@; do
 	wget -q -r $depth -R jpg,gif,png,ico,svg,pdf,css,js,mp3,mp4,m4v,mov,ogg,ogv,zip,flv,webm,avi $url -p ./sites
 done
 
-find ./ -iname "robots.txt" -exec if grep -P -q -H -i "(wordpress|wp)" {} ; then echo {}; fi \;
+find ./ -iname "robots.txt" -exec if grep -P -q -H -i "(wordpress|wp)" {} ; then echo {} | cut -d: -f 1 >> ../sites-found.list ; fi \;
